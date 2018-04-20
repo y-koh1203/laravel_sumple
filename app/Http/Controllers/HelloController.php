@@ -17,7 +17,15 @@ class HelloController extends Controller
         return view('hello.hello',$data);
     }
 
-    public function post(Request $request){
+    public function post(Request $request,Response $response){
         $name = $request->name;
+        $parse_request = explode(';',$request);
+        $data = array(
+            'name' => $name,
+            'requests' => $parse_request,
+            'response' => $response
+        );
+
+        return view('hello.hello',$data);
     }
 }
