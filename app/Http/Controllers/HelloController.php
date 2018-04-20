@@ -7,23 +7,17 @@ use Illuminate\Http\Response;
 
 class HelloController extends Controller
 {
-    public function index(Request $request,Response $response){
-        $html = <<<EOM
-        <html>
-        <head>
-            <title>test page</title>
-        </head> 
-        <body>
-            <h1>Hello!</h1>
-            <h2>Request</h2>
-            <pre>{$request}</pre>
-            <br>
-            <h2>Response</h2>
-            <pre>{$response}</pre>            
-        </body>
-        </html>
-EOM;
-        $response->setContent($html);
-        return $response;
+    public function hello(Request $request,Response $response){
+        $parse_request = explode(';',$request);
+        $data = array(
+            'requests' => $parse_request,
+            'response' => $response,
+            'id' => $request->id
+        );
+        return view('hello.hello',$data);
+    }
+
+    public function post(Request $request){
+        $name = $request->name;
     }
 }
