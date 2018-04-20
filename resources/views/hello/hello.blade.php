@@ -16,7 +16,4 @@
     </ul>
     <h2>Response Param</h2>
     {{$response}}
-    <br>
-    <h2>User Id</h2>
-    <p>{{$id}}</p>
 @endsection
